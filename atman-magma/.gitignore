@@ -1,0 +1,12 @@
+__pycache__/
+*.pt    ## chonky checkpoint files
+*.html  ## plotly figure exports
+*.ipynb ## b i g notebooks :)
+results/
+*.json
+mp_rank_00_model_states.pt ## checkpoint
+.ipynb_checkpoints/
+atman_magma.egg-info/
+mp_rank_00_model_states.pt
+chefer.jpg
+mp_rank_00_model_states.ptiz_7j6mmtmp

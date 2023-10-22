@@ -1,0 +1,48 @@
+name: atman-eval
+project: atman
+max_restarts: 2
+environment:
+  force_pull_image: true
+resources:
+  priority: 40
+  slots_per_trial: 1
+  devices:
+    - container_path: /dev/infiniband
+      host_path: /dev/infiniband
+      mode: mrw
+searcher:
+  name: grid
+  metric: not_needed
+  max_concurrent_trials: 66
+  max_length: 10000
+
+bind_mounts:
+entrypoint: python3 run_eval.py
+hyperparameters:
+  result_path:
+    type: categorical
+    vals:
+      - /det_cos_nolog_mult
+  conc_sup:
+    type: categorical
+    vals:
+      - .1
+      - .2
+      - .3
+      - .4
+      - .5
+      - .6
+      - .7
+      - .8
+      - .9
+      - .99
+      - None
+  sup_fact:
+    type: categorical
+    vals:
+      - .1,.2
+      - .3,.4
+      - .5,.6
+      - .7,.8
+      - .9
+      - 1.,0.

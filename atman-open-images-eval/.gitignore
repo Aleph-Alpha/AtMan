@@ -1,0 +1,8 @@
+.ipynb_checkpoints/
+*.ipynb
+RESULTS/
+__pycache__/
+*.jpg
+.vscode/
+*.zip
+*.json

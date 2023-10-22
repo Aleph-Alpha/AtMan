@@ -1,0 +1,20 @@
+logfile: "logs_30b.log"
+hyperparams:
+  conc_sup_values:
+    - 0.6
+  suppression_factor_values:
+    - 0.1
+  prompt_text: 'This is a picture of '
+
+files:
+  result_dir: '/temp_30b' ## remove the trailing "/"
+  raw_jsons_folder: "/temp_json_30b"
+  metadata_filename: 'metadata/all_classes_max_200_per_class.json'
+
+generator:
+  tokenizer_file: "alpha-001-128k.json"
+  checkpoint_dir: "/nfs/scratch/data_tmp/aa-alpha-001-128k-multilingual-data-alpha-1_30B_magma/global_step100000/"
+  pipe_parallel_size: 4
+  max_batch_size: 200 # edit this to be as big as possible
+  normalize : false
+  square_outputs : false

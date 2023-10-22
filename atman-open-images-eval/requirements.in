@@ -1,0 +1,6 @@
+pip-tools
+aleph-alpha-client
+datasets
+opencv-python-headless
+pillow
+fiftyone

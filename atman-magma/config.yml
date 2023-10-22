@@ -1,0 +1,16 @@
+hyperparams:
+  conc_sup_values:
+    - 0.6
+  suppression_factor_values:
+    - 0.1
+  prompt_text: 'This is a picture of '
+  save_configs_only: true
+
+files:
+  output_dir: './opensource_magma'
+  metadata_filename: 'metadata-openimages-mini.json'
+
+model:
+  device: 'cuda:0'
+  checkpoint_path: "./mp_rank_00_model_states.pt"
+  max_batch_size: 1 # edit this to be as big as possible
