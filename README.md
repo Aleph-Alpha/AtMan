@@ -1,10 +1,12 @@
 # AtMan- XAI on generative models
-![Demonstrating AtMan XAI on model generation](Fig1.png)
-
-[Paper Link](https://arxiv.org/abs/2301.08110)
 
 AtMan is a explainability method on transformer based language models. It correlates the relevance of the input tokens to the generated output by exhaustive probing. To obtain the score values, it applies ATtention MANipulation throughout all layers, and measures the difference in the resulting logprobs on the target tokens.
 As such, following belows examples, one is able to highlight discriminative features, e.g. on Images, when applying on multi-modal models.
+
+
+![Demonstrating AtMan XAI on model generation](Fig1.png)
+
+[Paper Link](https://arxiv.org/abs/2301.08110)
 
 
 ## how-to
