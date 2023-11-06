@@ -3,7 +3,6 @@ import os
 from PIL import Image
 from typing import Callable
 
-from multimodal_explain_eval.utils import check_if_a_or_an_and_get_prefix
 from magma.image_input import ImageInput
 from .utils import create_folder_if_does_not_exist
 
@@ -100,7 +99,7 @@ def run_eval(
 
             prompt = [
                 input_image,
-                text_prompt + check_if_a_or_an_and_get_prefix(word=data["label"]),
+                text_prompt + "a ",
             ]
 
             if use_lowercase_target == True:

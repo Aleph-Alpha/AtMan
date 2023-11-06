@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 from atman_magma.captum_helper import (
     CaptumMagma,
 )
-from multimodal_explain_eval.utils import check_if_a_or_an_and_get_prefix
 import numpy as np
 from atman_magma.magma  import Magma
 from magma.image_input import ImageInput
@@ -39,7 +38,7 @@ label_tokens =  model.tokenizer.encode(targets)
 att_combined = np.zeros((12,12))
 for i in range(len(label_tokens)):
 
-    text_prompt = f"This is a picture of {check_if_a_or_an_and_get_prefix(targets.lower())} "
+    text_prompt = f"This is a picture of a "
     if i >= 1:
         text_prompt += model.tokenizer.decode(label_tokens[:i])
 

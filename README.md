@@ -24,6 +24,8 @@ bash startup-hook.sh
 ```
 Note: further model-checkpoints will be downloaded when executing for the first time. Sometimes CLIP fails to verify on the first execution -> running again works usually.
 
+The main folders are atman-magma, for all XAI implementations on the MAGMA model, and BLIP for all XAI implementations on the BLIP model.
+
 # examples with MAGMA
 ```
 cd atman-magma
