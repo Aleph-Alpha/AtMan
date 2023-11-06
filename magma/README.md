@@ -1,4 +1,4 @@
-# this is a clone of the MAGMA repo -- minor adjustments
+# this is a clone of the MAGMA repo -- minor adjustments -- mainly to fix dependency
 # MAGMA -- Multimodal Augmentation of Generative Models through Adapter-based Finetuning
 
 ## Authors

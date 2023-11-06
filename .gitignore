@@ -1,2 +1,5 @@
 *.pt
 *.pth
+*pyc
+*build*
+*.egg*

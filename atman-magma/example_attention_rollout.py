@@ -1,5 +1,5 @@
 from atman_magma.magma  import Magma
-from atman.attention_rollout import AttentionRollout
+from atman_magma.attention_rollout import AttentionRolloutMagma
 
 print('loading model...')
 model = Magma.from_checkpoint(
