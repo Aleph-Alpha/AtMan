@@ -42,7 +42,6 @@ requires 1 A100
 
 ```
 python example_explain_panda_chefer.py
-run plot_panda.ipynb
 ```
 
 ## image-text/ MAGMA x Captum IxG, ...
@@ -50,17 +49,24 @@ requires 1 A100
 
 ```
 python example_explain_panda_captum.py
-run plot_panda.ipynb
 ```
 
 ## image-text/ rollout
-on it
+requires 1 RTX 3090
+
+```
+python example_explain_attention_rollout.py
+```
+
+## text/ GPT-J
+```
+python example_steering.py
+python example_document_qa_sentence_level_explain.py
+```
 
 ## image-text/ BLIP
 on it
 
-## text/ GPT-J
-on it
 
 
 # Method and Evaluation
@@ -74,3 +80,16 @@ on it
 ![performance](figs/fig5.png)
 
 ![quantitative](figs/tab1.png)
+
+
+# cite
+```
+@inproceedings{
+deiseroth2023atman,
+title={{ATMAN}: Understanding Transformer Predictions Through Memory Efficient Attention Manipulation},
+author={Bj{\"o}rn Deiseroth and Mayukh Deb and Samuel Weinbach and Manuel Brack and Patrick Schramowski and Kristian Kersting},
+booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
+year={2023},
+url={https://openreview.net/forum?id=PBpEb86bj7}
+}
+```

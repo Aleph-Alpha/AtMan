@@ -20,7 +20,7 @@ class AttentionRolloutMagma:
             device = device
         )
         prompt = ['hello world my name is Ben and i love burgers']
-        
+
         attention_rollout = AttentionRolloutMagma(model = model)
         embeddings = attention_rollout.model.preprocess_inputs(prompt) ## prompt is a list
 
@@ -30,17 +30,17 @@ class AttentionRolloutMagma:
         """
         self.model = model.eval()
         self.next_token_index = -1
-        
+
     def forward_pass(self, embeddings):
         with torch.no_grad():
             return self.model.lm(inputs_embeds  = embeddings, output_attentions = True)
-        
+
     def run(self, embeddings, return_next_token_output_only: bool = False):
         assert embeddings.ndim == 3, 'Expected tensor with 3 dims: (Batch, Sequence, Embedding)'
         outputs = self.forward_pass(embeddings = embeddings)
-        
+
         return self.get_attention_rollout_from_model_outputs(outputs, return_next_token_output_only  = return_next_token_output_only)
-    
+
     def get_attention_rollout_from_model_outputs(self, outputs, return_next_token_output_only: bool = True):
         all_attentions = outputs.attentions
         _attentions = [att.cpu().detach().numpy() for att in all_attentions]
@@ -59,18 +59,18 @@ class AttentionRolloutMagma:
         joint_attentions[0] = res_att_mat[0]
         for i in np.arange(1,layers):
             joint_attentions[i] = res_att_mat[i].dot(joint_attentions[i-1])
-            
+
         if return_next_token_output_only:
             return joint_attentions[:, self.next_token_index,:]
         else:
             return joint_attentions
-    
+
     def run_on_image(self, prompt, target, manipulate_last_n_tokens: int = None):
         assert isinstance(prompt[0], ImageInput), f'Expected the first prompt item to be an ImageInput but got: {type(prompt[0])}'
         assert isinstance(prompt[1], str), f'Expected the second prompt item to be an str but got: {type(prompt[1])}'
-        
+
         prompt_embeddings = self.model.preprocess_inputs(prompt) ## prompt is a list
-        target_embeddings = self.model.preprocess_inputs(target)
+        target_embeddings = self.model.preprocess_inputs([target])
         # print('len target:', target_embeddings.shape[1])
         embeddings = torch.cat(
             [
@@ -79,18 +79,17 @@ class AttentionRolloutMagma:
             ],
             dim =1
         )
-        
+
         joint_attentions = self.run(embeddings, return_next_token_output_only = False)
-        
+
         target_token_indices = [i for i in range(prompt_embeddings.shape[1]-1, embeddings.shape[1])]
-        
+
         heatmap = np.zeros((12,12))
-        
+
         for idx in target_token_indices:
             heatmap += joint_attentions[0,idx,1:145].reshape(12,12)
-           
-        
+
+
         if manipulate_last_n_tokens is not None:
             heatmap[-1,-manipulate_last_tokens:]=0.  ## set explanation values of last 2 tokens to 0
         return heatmap
-        
