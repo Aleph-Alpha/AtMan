@@ -30,6 +30,7 @@ The main folders are atman-magma, for all XAI implementations on the MAGMA model
 ```
 cd atman-magma
 ```
+
 ## image-text/ MAGMA x AtMan
 requires 1 RTX 3090
 
@@ -64,9 +65,20 @@ python example_steering.py
 python example_document_qa_sentence_level_explain.py
 ```
 
-## image-text/ BLIP
-on it
+# examples with BLIP
+```
+cd BLIP
+```
 
+## image-text/ BLIP x AtMan
+```
+python explain_vqa_run.py
+```
+
+## image-text/ BLIP x Chefer
+```
+python explain_vqa_chefer.py
+```
 
 
 # Method and Evaluation
