@@ -49,7 +49,7 @@ model = Magma.from_checkpoint(
 
 document_explainer = DocumentQAExplainer(
     model,
-    explanation_delimiter = '\n',  ## for now max len = 1 token (todo: add support for longer delimiters)
+    explanation_delimiters = ['\n'],  ## for now max len = 1 token (todo: add support for longer delimiters)
     device = 'cuda:0',
     suppression_factor = 0.0,  ## suppression_factor = 0.0 -> completely erases one chunk at a time
     document = DOCUMENT
@@ -76,3 +76,4 @@ document_explainer.show_output(
 ## save as json or print
 postprocessed_output = document_explainer.postprocess(output)
 postprocessed_output.save_as(filename = 'explanation.json')
+print('explanation.json')
